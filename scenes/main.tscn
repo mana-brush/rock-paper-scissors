@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://xaxlbu23v31u"]
+
+[ext_resource type="Texture2D" uid="uid://eqmh1o07sueg" path="res://art/bottom_panel.png" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://dprvc2onquy4i" path="res://scenes/main.gd" id="1_tefeu"]
+[ext_resource type="PackedScene" uid="uid://cxht1mucnk2g" path="res://scenes/card.tscn" id="2_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://c5qpj2r6628wt" path="res://scenes/selectable_card.tscn" id="2_tefeu"]
+[ext_resource type="Texture2D" uid="uid://catnii62y4exu" path="res://art/top_panel.png" id="3_tefeu"]
+[ext_resource type="FontFile" uid="uid://domqfr6iqg035" path="res://fonts/Xolonium-Regular.ttf" id="4_o6xl0"]
+
+[node name="Main" type="CanvasLayer" unique_id=44675624]
+script = ExtResource("1_tefeu")
+
+[node name="ButtonPanel" type="Sprite2D" parent="." unique_id=832592900]
+position = Vector2(360, 1123)
+texture = ExtResource("1_jyhfs")
+
+[node name="RockCard" parent="ButtonPanel" unique_id=896924905 instance=ExtResource("2_tefeu")]
+position = Vector2(-237, -10)
+
+[node name="PaperCard" parent="ButtonPanel" unique_id=1079779960 instance=ExtResource("2_tefeu")]
+position = Vector2(7, -10)
+
+[node name="ScissorCard" parent="ButtonPanel" unique_id=1340997892 instance=ExtResource("2_tefeu")]
+position = Vector2(242, -9)
+
+[node name="Screen" type="Sprite2D" parent="." unique_id=1053421512]
+position = Vector2(360, 483)
+texture = ExtResource("3_tefeu")
+
+[node name="ComputerCard" parent="Screen" unique_id=270412439 instance=ExtResource("2_tbgi4")]
+position = Vector2(-3, -216)
+
+[node name="ComputerTimer" type="Timer" parent="Screen/ComputerCard" unique_id=1945970501]
+wait_time = 0.25
+autostart = true
+
+[node name="PlayerChoiceCard" parent="Screen" unique_id=53970081 instance=ExtResource("2_tbgi4")]
+position = Vector2(-3, 224)
+
+[node name="VersusLabel" type="Label" parent="Screen" unique_id=117326472]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -397.5
+offset_top = -524.0
+offset_right = -322.5
+offset_bottom = -436.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_o6xl0")
+theme_override_font_sizes/font_size = 64
+text = "VS"
+
+[node name="ResetButton" type="Button" parent="Screen" unique_id=784891197]
+offset_left = -274.0
+offset_top = -390.0
+offset_right = -129.0
+offset_bottom = -330.0
+theme_override_fonts/font = ExtResource("4_o6xl0")
+theme_override_font_sizes/font_size = 32
+text = "RESET"
+
+[connection signal="clicked" from="ButtonPanel/RockCard" to="." method="_on_rock_card_clicked"]
+[connection signal="clicked" from="ButtonPanel/PaperCard" to="." method="_on_paper_card_clicked"]
+[connection signal="clicked" from="ButtonPanel/ScissorCard" to="." method="_on_scissor_card_clicked"]
+[connection signal="timeout" from="Screen/ComputerCard/ComputerTimer" to="." method="_on_computer_timer_timeout"]
+[connection signal="pressed" from="Screen/ResetButton" to="." method="_on_reset_button_pressed"]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cxht1mucnk2g"]
+
+[ext_resource type="Texture2D" uid="uid://cq8s286egab44" path="res://art/button.png" id="1_d81rb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6u4wf"]
+size = Vector2(203, 270)
+
+[node name="SelectableCard" type="Area2D" unique_id=896924905]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=724645238]
+position = Vector2(2.5, 1)
+shape = SubResource("RectangleShape2D_6u4wf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=312837935]
+texture = ExtResource("1_d81rb")
+
+[node name="HandSprite" type="Sprite2D" parent="." unique_id=964108967]

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c5qpj2r6628wt"]
+
+[ext_resource type="Texture2D" uid="uid://cq8s286egab44" path="res://art/button.png" id="1_83xbe"]
+[ext_resource type="Script" uid="uid://c43oc70xgm06f" path="res://scenes/selectable_card.gd" id="1_lqwsb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6u4wf"]
+size = Vector2(203, 270)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_83xbe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83xbe"]
+bg_color = Color(0.3529412, 0.3529412, 0.3529412, 0.53333336)
+
+[node name="SelectableCard" type="Area2D" unique_id=896924905]
+script = ExtResource("1_lqwsb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=724645238]
+position = Vector2(2.5, 1)
+shape = SubResource("RectangleShape2D_6u4wf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=312837935]
+texture = ExtResource("1_83xbe")
+
+[node name="HandSprite" type="Sprite2D" parent="." unique_id=142089050]
+
+[node name="Button" type="Button" parent="." unique_id=1194311046]
+offset_left = -99.0
+offset_top = -134.0
+offset_right = 104.0
+offset_bottom = 135.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_83xbe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_83xbe")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
