@@ -19,7 +19,7 @@ var scissor_texture = load("res://art/scissors-hand.png")
 var player_choice
 var computer_choice
 var computer_choice_index = 0
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	
 	$Screen/ResetButton.visible = false
